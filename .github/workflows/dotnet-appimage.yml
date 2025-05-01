@@ -12,7 +12,37 @@ on:
     types: [published]
 
 jobs:
-  build-linux-appimage:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+        - uses: actions/checkout@v4
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: 9.0.x
+        - name: Restore dependencies
+          run: dotnet restore
+
+        - name: Install pupnet
+          run: dotnet tool install --global KuiperZone.PupNet
+
+        - name: Create Setup 
+          run: pupnet A2RacerTool --kind setup -y
+
+        - name: Create Zip 
+          run: pupnet A2RacerTool --kind zip -y
+
+        - name: Upload a Build Artifact
+          uses: actions/upload-artifact@v4.6.2
+          with:
+            # Artifact name
+            name: A2RacerTool.x86_64.AppImage # optional, default is artifact
+            # A file, directory or wildcard pattern that describes what to upload
+            path: |
+              ./A2RacerTool/Deploy/bin/A2RacerTool.x64.exe
+              ./A2RacerTool/Deploy/bin/A2RacerTool-1.0.0-1.win-x64.zip
+            # The desired behavior if no files are found using the provided path.
+  build-linux:
 
     runs-on: ubuntu-latest
 
@@ -33,6 +63,12 @@ jobs:
       
     - name: Create AppImage
       run: pupnet A2RacerTool --runtime linux-x64 --kind appimage -y
+      
+    - name: Create .RPM
+      run: pupnet A2RacerTool --runtime linux-x64 --kind rpm -y
+      
+    - name: Create .DEB
+      run: pupnet A2RacerTool --runtime linux-x64 --kind deb -y
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.6.2
@@ -40,7 +76,12 @@ jobs:
         # Artifact name
         name: A2RacerTool.x86_64.AppImage # optional, default is artifact
         # A file, directory or wildcard pattern that describes what to upload
-        path: Deploy/bin/A2RacerTool.x86_64.AppImage
+        path: |
+          ./A2RacerTool/Deploy/bin/A2RacerTool.x86_64.AppImage
+          ./A2RacerTool/Deploy/bin/A2RacerTool.x86_64.rpm
+          ./A2RacerTool/Deploy/bin/A2RacerTool.x86_64.deb
         # The desired behavior if no files are found using the provided path.
+          
+    
     
               

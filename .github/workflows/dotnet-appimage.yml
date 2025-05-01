@@ -32,16 +32,17 @@ jobs:
         - name: Create Zip 
           run: pupnet A2RacerTool --kind zip -y
 
-        - name: Upload a Build Artifact
+        - name: Upload a InnoSetup Artifact
           uses: actions/upload-artifact@v4.6.2
           with:
-            # Artifact name
-            name: A2RacerTool.x86_64.AppImage # optional, default is artifact
-            # A file, directory or wildcard pattern that describes what to upload
-            path: |
-              ./A2RacerTool/Deploy/bin/A2RacerTool.x64.exe
-              ./A2RacerTool/Deploy/bin/A2RacerTool-1.0.0-1.win-x64.zip
-            # The desired behavior if no files are found using the provided path.
+            name: A2RacerTool.x64.exe # optional, default is artifact
+            path: ./A2RacerTool/Deploy/bin/A2RacerTool.x64.exe
+            
+        - name: Upload a .zip Artifact
+          uses: actions/upload-artifact@v4.6.2
+          with:
+            name: A2RacerTool-1.0.0-1.win-x64.zip # optional, default is artifact
+            path: ./A2RacerTool/Deploy/bin/A2RacerTool-1.0.0-1.win-x64.zip
   build-linux:
 
     runs-on: ubuntu-latest
@@ -69,19 +70,30 @@ jobs:
       
     - name: Create .DEB
       run: pupnet A2RacerTool --runtime linux-x64 --kind deb -y
+      
+    - name: Create .ZIP
+      run: pupnet A2RacerTool --runtime linux-x64 --kind zip -y
     
-    - name: Upload a Build Artifact
+    - name: Upload an AppImage Artifact
       uses: actions/upload-artifact@v4.6.2
       with:
-        # Artifact name
         name: A2RacerTool.x86_64.AppImage # optional, default is artifact
-        # A file, directory or wildcard pattern that describes what to upload
-        path: |
-          ./A2RacerTool/Deploy/bin/A2RacerTool.x86_64.AppImage
-          ./A2RacerTool/Deploy/bin/A2RacerTool.x86_64.rpm
-          ./A2RacerTool/Deploy/bin/A2RacerTool.x86_64.deb
-        # The desired behavior if no files are found using the provided path.
+        path: ./A2RacerTool/Deploy/bin/A2RacerTool.x86_64.AppImage
           
-    
-    
+    - name: Upload a .deb Artifact
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: a2racertool_1.0.0-1_amd64.deb # optional, default is artifact
+        path: ./A2RacerTool/Deploy/bin/a2racertool_1.0.0-1_amd64.deb # todo: add automatic versioning
+
+    - name: Upload a .rpm Artifact
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: a2racertool_1.0.0-1.x86_64.rpm # optional, default is artifact
+        path: ./A2RacerTool/Deploy/bin/a2racertool_1.0.0-1.x86_64.rpm # todo: add automatic versioning
+    - name: Upload a .zip Artifact
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        name: A2RacerTool-1.0.0-1.linux-x64.zip # optional, default is artifact
+        path: ./A2RacerTool/Deploy/bin/A2RacerTool.1.0.0-1.linux-x64.zip # todo: add automatic versioning
               

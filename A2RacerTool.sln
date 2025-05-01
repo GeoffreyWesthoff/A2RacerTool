@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2RacerTool", "A2RacerTool\A2RacerTool.csproj", "{98464DBA-562C-4CEF-99A6-A9978C1C0598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssetRipper", "AssetRipper\AssetRipper.csproj", "{BCE4C5F7-1A73-438B-98DB-67BACBA13A01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2RacerConsole", "A2RacerConsole\A2RacerConsole.csproj", "{A83964FB-A6A4-409F-B252-89AA29B43241}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98464DBA-562C-4CEF-99A6-A9978C1C0598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98464DBA-562C-4CEF-99A6-A9978C1C0598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98464DBA-562C-4CEF-99A6-A9978C1C0598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98464DBA-562C-4CEF-99A6-A9978C1C0598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE4C5F7-1A73-438B-98DB-67BACBA13A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE4C5F7-1A73-438B-98DB-67BACBA13A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE4C5F7-1A73-438B-98DB-67BACBA13A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE4C5F7-1A73-438B-98DB-67BACBA13A01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A83964FB-A6A4-409F-B252-89AA29B43241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A83964FB-A6A4-409F-B252-89AA29B43241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A83964FB-A6A4-409F-B252-89AA29B43241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A83964FB-A6A4-409F-B252-89AA29B43241}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

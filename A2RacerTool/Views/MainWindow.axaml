@@ -1,0 +1,57 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:A2RacerTool.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="A2RacerTool.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="A2RacerTool">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+    <Panel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <ItemsControl>
+            <TextBlock HorizontalAlignment="Center" Margin="0 0 0 30" FontWeight="Bold" FontSize="24">A2 Racer II Modding Tool</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0 5" FontSize="16" FontWeight="SemiBold">Extract Assets</TextBlock>
+            <TextBlock Text="Path to rcs.ind" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <StackPanel Margin="0 0 0 10" Orientation="Horizontal">
+                <TextBox MinWidth="400" MaxWidth="400" Text="{Binding PathToRcsInd}"></TextBox>
+                <Button Margin="10 0 0 0 " Click="RcsPathFilePickerButton_OnClick">
+                    <PathIcon Height="16" Width="16" Data="{StaticResource FolderRegular}"></PathIcon>
+                </Button>
+            </StackPanel>
+            <TextBlock Text="Output folder"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBox MinWidth="400" MaxWidth="400" Text="{Binding OutPath}"></TextBox>
+                <Button Margin="10 0 0 0 " Click="OutPathFilePickerButton_OnClick">
+                    <PathIcon Height="16" Width="16" Data="{StaticResource FolderRegular}"></PathIcon>
+                </Button>
+            </StackPanel>
+            <CheckBox Name="ConvertModels" Content="Convert .d3d models to .obj"></CheckBox>
+            <Button Click="ExtractButton_OnClick" Margin="10 " HorizontalAlignment="Center" FontWeight="Bold">EXTRACT!</Button>
+            <TextBlock HorizontalAlignment="Center" Margin="0 5" FontSize="16" FontWeight="SemiBold">Pack Assets</TextBlock>
+            <TextBlock Text="Path to extracted resources" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <StackPanel Margin="0 0 0 10" Orientation="Horizontal">
+                <TextBox MinWidth="400" MaxWidth="400" Text="{Binding PathToExtracted}"></TextBox>
+                <Button Margin="10 0 0 0 " Click="ExtractedPathFilePickerButton_OnClick">
+                    <PathIcon Height="16" Width="16" Data="{StaticResource FolderRegular}"></PathIcon>
+                </Button>
+            </StackPanel>
+            <TextBlock Text="Packfile output folder"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBox MinWidth="400" MaxWidth="400" Text="{Binding PackPath}"></TextBox>
+                <Button Margin="10 0 0 0 " Click="PackPathFilePickerButton_OnClick">
+                    <PathIcon Height="16" Width="16" Data="{StaticResource FolderRegular}"></PathIcon>
+                </Button>
+            </StackPanel>
+            <Button Click="CompileButton_OnClick" Margin="10 " HorizontalAlignment="Center" FontWeight="Bold">PACK!</Button>
+        </ItemsControl>
+    </Panel>
+
+
+</Window>

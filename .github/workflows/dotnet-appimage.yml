@@ -26,7 +26,7 @@ jobs:
       run: dotnet restore
 
     - name: Install pupnet
-      run: dotnet tool install --global pupnet
+      run: dotnet tool install --global KuiperZone.PupNet
       
     - name: Create AppImage
       run: pupnet A2RacerTool --runtime linux-x64 --kind appimage -y

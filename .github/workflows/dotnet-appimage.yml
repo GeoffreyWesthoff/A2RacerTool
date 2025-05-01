@@ -1,0 +1,40 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Build .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  release: 
+    types: [published]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Create AppImage
+      run: pupnet --runtime linux-x64 --kind appimage
+    
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.6.2
+      with:
+        # Artifact name
+        name: A2RacerTool.x86_64.AppImage # optional, default is artifact
+        # A file, directory or wildcard pattern that describes what to upload
+        path: Deploy/bin/A2RacerTool.x86_64.AppImage
+        # The desired behavior if no files are found using the provided path.
+    
+              

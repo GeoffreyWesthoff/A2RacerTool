@@ -25,6 +25,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
+    - name: Install pupnet
+      run: dotnet tool install --global pupnet
+      
     - name: Create AppImage
       run: pupnet A2RacerTool --runtime linux-x64 --kind appimage -y
     
